@@ -7,16 +7,16 @@ tweet hashtag graph.
 # Written by Qingpeng Zhang for Insight Coding Challenge.
 
 To make it really efficient, we use two data structures. One is a list of tuples, 
-self.edges. Each tuple include the timestamp and the two hashtags for a edge. We always
-put the edge tuples in the order of timestamp. For insertion new edge, we scan the list
-from the end, with the latest timestamp, until we find the appropirate position to 
-insert the edge. For removing old edges out of the 60s window, we scan the list from the
-beginning, until we find the cutoff point. 
-This can increase the efficient significantly.
+self.edges. Each tuple include the timestamp and the two hashtags for an edge. We always
+put the edge tuples by the order of timestamp for easy searching. For inserting new edge, we scan the list
+from the end(right to left), from the edge with the latest timestamp, until we find the appropirate position to 
+insert the new edge. For removing old edges out of the 60s window, we scan the list from the
+beginning(left to right), until we find the cutoff point. 
+This can increase the efficiency significantly.
 
-Also we use another data structure, a dictionary with edges and corresponding timestamp.
-This is used for dealing with edge that has alreay been in the graph. So we only need
-to find the position of that edge in the list, and update the time stamp.
+Also we use another data structure, a dictionary with edges and corresponding timestamps.
+This is used for dealing with new edge that has alreay been in the graph. So we only need
+to find the position of that edge in the list, and update the time stamp if necessary.
 
 
 In our testing, it can finish the 10000 lines in about 5 seconds on my laptop.
